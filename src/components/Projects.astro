@@ -1,0 +1,256 @@
+---
+const projects = [
+  {
+    id: 1,
+    title: "E-commerce Dashboard",
+    description: "A modern dashboard for managing online stores with real-time analytics and inventory management.",
+    image: "/projects/project1.jpg",
+    githubUrl: "https://github.com/username/ecommerce-dashboard",
+    liveUrl: "https://ecommerce-dashboard.demo.com",
+    tags: ["React", "TypeScript", "Tailwind"]
+  },
+  {
+    id: 2,
+    title: "Task Management App",
+    description: "Collaborative task management application with drag-and-drop functionality and team features.",
+    image: "/projects/project2.jpg",
+    githubUrl: "https://github.com/username/task-manager",
+    liveUrl: "https://taskmanager.demo.com",
+    tags: ["Vue.js", "Node.js", "MongoDB"]
+  },
+  {
+    id: 3,
+    title: "Weather App",
+    description: "Beautiful weather application with location-based forecasts and interactive maps.",
+    image: "/projects/project3.jpg",
+    githubUrl: "https://github.com/username/weather-app",
+    liveUrl: "https://weather.demo.com",
+    tags: ["JavaScript", "API", "CSS"]
+  },
+  {
+    id: 4,
+    title: "Portfolio Website",
+    description: "Personal portfolio website built with modern web technologies and optimized for performance.",
+    image: "/projects/project4.jpg",
+    githubUrl: "https://github.com/username/portfolio",
+    liveUrl: "https://portfolio.demo.com",
+    tags: ["Astro", "TypeScript", "SCSS"]
+  }
+];
+---
+
+<section class="projects">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    
+    <div class="projects-carousel">
+      <div class="projects-wrapper">
+        {projects.map((project) => (
+          <div class="project-card">
+            <div class="project-image">
+              <img src={project.image} alt={project.title} />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">{project.title}</h3>
+              <p class="project-description">{project.description}</p>
+              <div class="project-tags">
+                {project.tags.map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+              <div class="project-links">
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn btn-github">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  GitHub
+                </a>
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-live">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15,3 21,3 21,9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                  Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+  }
+  
+  .projects-carousel {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+  
+  .projects-wrapper {
+    display: flex;
+    gap: 2rem;
+    width: fit-content;
+  }
+  
+  .project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 350px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -3px rgb(0 0 0 / 0.1);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+  
+  .project-content {
+    padding: 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    color: #1a1a1a;
+  }
+  
+  .project-description {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tag {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-github {
+    background: #1a1a1a;
+    color: white;
+  }
+  
+  .btn-github:hover {
+    background: #333;
+  }
+  
+  .btn-live {
+    background: transparent;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+  }
+  
+  .btn-live:hover {
+    background: #1976d2;
+    color: white;
+  }
+  
+  /* Custom scrollbar */
+  .projects-carousel {
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+  
+  .projects-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .projects-carousel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .projects-carousel::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  .projects-carousel::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+  
+  @media (max-width: 768px) {
+    .projects-wrapper {
+      gap: 1rem;
+    }
+    
+    .project-card {
+      width: 280px;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+</style>
