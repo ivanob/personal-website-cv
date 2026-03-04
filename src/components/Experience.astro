@@ -30,162 +30,48 @@ const experiences = [
 ];
 ---
 
-<section class="experience">
-  <div class="container">
-    <h2 class="section-title">Professional Experience</h2>
+<section class="py-16 px-8 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-16 text-gray-900">Professional Experience</h2>
     
-    <div class="timeline">
-      <div class="timeline-line"></div>
+    <div class="relative max-w-4xl mx-auto">
+      {/* Timeline line */}
+      <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 -translate-x-1/2"></div>
       
-      {experiences.map((exp, index) => (
-        <div class={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
-          <div class="timeline-dot"></div>
-          <div class="experience-card">
-            <div class="period">{exp.period}</div>
-            <h3 class="job-title">{exp.title}</h3>
-            <div class="company">{exp.company} • {exp.location}</div>
-            <p class="description">{exp.description}</p>
-            <div class="skills">
-              {exp.skills.map(skill => (
-                <span class="skill-tag">{skill}</span>
-              ))}
+      {/* Timeline items */}
+      <div class="space-y-0">
+        {experiences.map((exp, index) => (
+          <div class="relative py-8">
+            {/* Timeline dot */}
+            <div class="absolute left-1/2 top-8 w-4 h-4 bg-gray-900 rounded-full -translate-x-1/2 z-10"></div>
+            
+            {/* Card container */}
+            <div class={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+              {/* Left/Right spacing */}
+              <div class="w-1/2"></div>
+              
+              {/* Experience card */}
+              <div class="w-1/2 px-4">
+                <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow duration-200">
+                  <div class="text-sm text-gray-500 font-medium mb-2">{exp.period}</div>
+                  <h3 class="text-2xl font-bold mb-1 text-gray-900">{exp.title}</h3>
+                  <div class="text-sm text-gray-600 mb-4">{exp.company} • {exp.location}</div>
+                  <p class="text-gray-600 text-sm leading-relaxed mb-4">{exp.description}</p>
+                  
+                  {/* Skills tags */}
+                  <div class="flex flex-wrap gap-2">
+                    {exp.skills.map(skill => (
+                      <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 </section>
-
-<style>
-  .experience {
-    padding: 4rem 2rem;
-    background: white;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 4rem;
-    color: #1a1a1a;
-  }
-  
-  .timeline {
-    position: relative;
-  }
-  
-  .timeline-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #e0e0e0;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-  
-  .timeline-item {
-    position: relative;
-    margin-bottom: 4rem;
-  }
-  
-  .timeline-dot {
-    position: absolute;
-    left: 50%;
-    top: 1rem;
-    width: 12px;
-    height: 12px;
-    background: #1a1a1a;
-    border: 3px solid white;
-    border-radius: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-  }
-  
-  .experience-card {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    width: 60%;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .timeline-item.left .experience-card {
-    margin-right: auto;
-    margin-left: 0;
-  }
-  
-  .timeline-item.right .experience-card {
-    margin-left: auto;
-    margin-right: 0;
-  }
-  
-  .period {
-    font-size: 0.875rem;
-    color: #666;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-  }
-  
-  .job-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 0 0.25rem 0;
-    color: #1a1a1a;
-  }
-  
-  .company {
-    font-size: 0.875rem;
-    color: #666;
-    margin-bottom: 1rem;
-  }
-  
-  .description {
-    color: #444;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .skill-tag {
-    background: #e3f2fd;
-    color: #1976d2;
-    padding: 0.25rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
-  
-  @media (max-width: 768px) {
-    .timeline-line {
-      left: 1.5rem;
-    }
-    
-    .timeline-dot {
-      left: 1.5rem;
-    }
-    
-    .experience-card {
-      width: calc(100% - 4rem);
-      margin-left: 3rem !important;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-    }
-  }
-</style>
