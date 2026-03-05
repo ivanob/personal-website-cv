@@ -6,6 +6,9 @@ resource "aws_s3_bucket" "personal_website" {
   }
 }
 
+# Only CloudFront has access to the bucket, which is the reason we don't need the CORS configuration.
+# I will keep it commented out for now
+
 # resource "aws_s3_bucket_cors_configuration" "personal_website_cors" {
 #   bucket = aws_s3_bucket.personal_website.id
 #   cors_rule {
@@ -33,32 +36,32 @@ resource "aws_s3_bucket_ownership_controls" "personal_website" {
   }
 }
 
-# Direct access to the bucket is blocked, only CloudFront can access it. This is the reason we dont need the CORS configuration. I will keep it commented out for now
-# data "aws_iam_policy_document" "personal_website_oac" {
-#   statement {
-#     sid     = "AllowCloudFrontServicePrincipalReadOnly"
-#     effect  = "Allow"
-#     actions = ["s3:GetObject"]
+# Direct access to the bucket is blocked, only CloudFront can access it.
+data "aws_iam_policy_document" "personal_website_oac" {
+  statement {
+    sid     = "AllowCloudFrontServicePrincipalReadOnly"
+    effect  = "Allow"
+    actions = ["s3:GetObject"]
 
-#     resources = ["${aws_s3_bucket.personal_website.arn}/*"]
+    resources = ["${aws_s3_bucket.personal_website.arn}/*"]
 
-#     principals {
-#       type        = "Service"
-#       identifiers = ["cloudfront.amazonaws.com"]
-#     }
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
 
-#     condition {
-#       test     = "StringEquals"
-#       variable = "AWS:SourceArn"
-#       values   = [aws_cloudfront_distribution.personal_website.arn]
-#     }
-#   }
-# }
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.personal_website.arn]
+    }
+  }
+}
 
-# resource "aws_s3_bucket_policy" "personal_website" {
-#   bucket = aws_s3_bucket.personal_website.id
-#   policy = data.aws_iam_policy_document.personal_website_oac.json
-# }
+resource "aws_s3_bucket_policy" "personal_website" {
+  bucket = aws_s3_bucket.personal_website.id
+  policy = data.aws_iam_policy_document.personal_website_oac.json
+}
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "site" {
   bucket = aws_s3_bucket.personal_website.id
