@@ -1,46 +1,20 @@
-# My Astro App
+# My own personal portfolio site
 
-This is a simple Astro project integrated with Tailwind CSS.
+This is a project created in Astro that displays my portfolio, skills, professional experience... and a link to my blog.
 
-## Getting Started
+It is natively deployed into AWS, using github actions as CI/CD.
 
-To get started with this project, follow these steps:
+## Deployment
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd my-astro-app
-   ```
+S3 (private) + CloudFront + ACM (TLS) + Route 53 (DNS)
+…and a CI step that runs astro build and uploads dist/ to S3 + invalidates CloudFront.
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+Cloudfront accesses the S3 container that stores the /dist build of the project and serves it. The ACM is needed cause nowadays all the browsers will flag the site as dangerous if I keep it only with HTTP, so I also need HTTPS. Even more, the .dev domains are handled by Google and HTTPS is mandatory.
 
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+## The user flow
 
-4. **Open your browser:**
-   Navigate to `http://localhost:3000` to see your application in action.
-
-## Project Structure
-
-- `src/components`: Contains reusable components.
-- `src/layouts`: Contains layout components for consistent page structure.
-- `src/pages`: Contains the main pages of the application.
-- `src/styles`: Contains global styles, including Tailwind CSS.
-- `public`: Contains static assets like images and favicons.
-- `astro.config.mjs`: Configuration file for Astro.
-- `tailwind.config.cjs`: Configuration file for Tailwind CSS.
-- `package.json`: Lists project dependencies and scripts.
-- `tsconfig.json`: TypeScript configuration file.
-
-## Contributing
-
-Feel free to submit issues or pull requests for any improvements or features you'd like to see!
-
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
+```User → Route53 (DNS) → CloudFront (CDN) → S3 (files)```
+- S3 stores my static files
+- CloudFront serves them globally with HTTPS
+   - ACM provides the SSL certificate (must be us-east-1)
+-  Route53 points my domain to CloudFront
