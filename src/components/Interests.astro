@@ -1,3 +1,39 @@
-chess.com link
-linux
-exercise
+
+---
+const interests = [
+  {
+    emoji: "🏃",
+    title: "Running",
+    description: "Training for my third half marathon. Early mornings, empty streets, bad playlists."
+  },
+  {
+    emoji: "📚",
+    title: "Reading",
+    description: "Mostly non-fiction. Obsessed with books on systems thinking and human behaviour."
+  },
+  {
+    emoji: "✈️",
+    title: "Travelling",
+    description: "Slow travel whenever possible. Currently building a list of every good coffee shop in Europe."
+  }
+]
+//chess.com link
+//linux
+//exercise
+---
+
+<section class="py-16 px-8 bg-white" id="interests">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold mb-12 text-gray-900">Interests</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {interests.map((interest) => (
+        <div class="flex flex-col gap-3 p-8 bg-white rounded-2xl">
+          <span class="text-4xl">{interest.emoji}</span>
+          <h3 class="text-lg font-bold text-gray-900">{interest.title}</h3>
+          <p class="font-serif text-gray-500 text-sm leading-relaxed italic">{interest.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+---
+const skills = [
+  {
+    category: "Frontend",
+    icon: "🎨",
+    items: [
+      { tech: "React", description: "Component-based UI development" },
+      { tech: "TypeScript", description: "Type-safe JavaScript" },
+      { tech: "Astro", description: "Static site generation" },
+      { tech: "Tailwind CSS", description: "Utility-first styling" },
+    ]
+  },
+  {
+    category: "Backend",
+    icon: "⚙️",
+    items: [
+      { tech: "Node.js", description: "Server-side JavaScript" },
+      { tech: "Python", description: "Scripting and APIs" },
+      { tech: "PostgreSQL", description: "Relational database" },
+      { tech: "REST APIs", description: "API design and integration" },
+    ]
+  },
+  {
+    category: "Cloud",
+    icon: "☁️",
+    items: [
+      { tech: "AWS S3", description: "Static file storage" },
+      { tech: "CloudFront", description: "CDN and content delivery" },
+      { tech: "ACM", description: "SSL certificate management" },
+      { tech: "IAM", description: "Access and identity management" },
+    ]
+  },
+  {
+    category: "DevOps",
+    icon: "🚀",
+    items: [
+      { tech: "Terraform", description: "Infrastructure as code" },
+      { tech: "GitHub Actions", description: "CI/CD pipelines" },
+      { tech: "Docker", description: "Containerisation" },
+      { tech: "Git", description: "Version control" },
+    ]
+  }
+];
+---
+
+<section class="py-16 px-8 bg-white" id="skills">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-12 text-gray-900">Skills</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {skills.map((group) => (
+        <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-md transition-shadow duration-300">
+          
+          {/* Category Header */}
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-3xl">{group.icon}</span>
+            <h3 class="text-2xl font-bold text-gray-900">{group.category}</h3>
+          </div>
+
+          {/* Skills List */}
+          <ul class="space-y-4">
+            {group.items.map((item) => (
+              <li class="flex items-center gap-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
+                <span class="inline-flex items-center gap-2">
+                  <span class="bg-gray-900 text-white text-sm font-medium px-3 py-1 rounded-full">
+                    {item.tech}
+                  </span>
+                  <span class="text-gray-600 text-sm">{item.description}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@ const experiences = [
     id: 1,
     title: "Senior Product Designer",
     company: "Tech Company",
+    logo: "/companies/techcompany.png",
     period: "2022 - Present",
     location: "Lisbon, Portugal",
     description: "Led design system implementation and user experience improvements across multiple products.",
@@ -13,6 +14,7 @@ const experiences = [
     id: 2,
     title: "Product Designer",
     company: "Design Studio",
+    logo: "/companies/designstudio.png",
     period: "2020 - 2022",
     location: "Porto, Portugal",  
     description: "Designed mobile and web applications with focus on user-centered design principles.",
@@ -22,6 +24,7 @@ const experiences = [
     id: 3,
     title: "Junior Designer",
     company: "Startup Inc",
+    logo: "/companies/startup.png",
     period: "2018 - 2020",
     location: "Remote",
     description: "Created visual designs and interactive prototypes for early-stage products.",
@@ -31,34 +34,37 @@ const experiences = [
 ---
 
 <section class="py-16 px-8 bg-white">
-  <div class="max-w-6xl mx-auto">
+  <div class="max-w-8xl mx-auto">
     <h2 class="text-5xl font-bold text-center mb-16 text-gray-900">Professional Experience</h2>
     
-    <div class="relative max-w-4xl mx-auto">
-      {/* Timeline line */}
+    <div class="relative max-w-7xl mx-auto">
       <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 -translate-x-1/2"></div>
       
-      {/* Timeline items */}
       <div class="space-y-0">
         {experiences.map((exp, index) => (
           <div class="relative py-8">
-            {/* Timeline dot */}
             <div class="absolute left-1/2 top-8 w-4 h-4 bg-gray-900 rounded-full -translate-x-1/2 z-10"></div>
             
-            {/* Card container */}
             <div class={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-              {/* Left/Right spacing */}
               <div class="w-1/2"></div>
               
-              {/* Experience card */}
-              <div class="w-1/2 px-4">
+              <div class="w-1/2 px-6">
                 <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow duration-200">
                   <div class="text-sm text-gray-500 font-medium mb-2">{exp.period}</div>
-                  <h3 class="text-2xl font-bold mb-1 text-gray-900">{exp.title}</h3>
-                  <div class="text-sm text-gray-600 mb-4">{exp.company} • {exp.location}</div>
+
+                  {/* Logo + title + company row */}
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-white rounded-lg border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden">
+                      <img src={exp.logo} alt={exp.company} class="w-7 h-7 object-contain" />
+                    </div>
+                    <div>
+                      <h3 class="text-2xl font-bold text-gray-900">{exp.title}</h3>
+                      <div class="text-sm text-gray-600">{exp.company} • {exp.location}</div>
+                    </div>
+                  </div>
+
+                  {/* Everything else unchanged */}
                   <p class="text-gray-600 text-sm leading-relaxed mb-4">{exp.description}</p>
-                  
-                  {/* Skills tags */}
                   <div class="flex flex-wrap gap-2">
                     {exp.skills.map(skill => (
                       <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">
@@ -66,6 +72,7 @@ const experiences = [
                       </span>
                     ))}
                   </div>
+
                 </div>
               </div>
             </div>

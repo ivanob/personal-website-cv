@@ -1,0 +1,86 @@
+---
+const education = [
+  {
+    degree: "MSc Computer Science",
+    school: "Universidad Politécnica de Madrid",
+    location: "Madrid, Spain",
+    period: "2014 – 2016",
+    score: "8.7 / 10",
+    thesis: {
+      title: "Adaptive UI Systems for Mobile Devices",
+      description: "Research on context-aware interfaces that adapt layout and content based on user behaviour patterns."
+    },
+    highlights: [
+      "Graduated with Honours",
+      "Best Thesis Award – HCI category",
+    ]
+  },
+  {
+    degree: "BSc Software Engineering",
+    school: "Universidad Politécnica de Madrid",
+    location: "Madrid, Spain",
+    period: "2010 – 2014",
+    score: "8.2 / 10",
+    thesis: {
+      title: "Real-time Collaborative Web Editor",
+      description: "Built a real-time collaborative text editor using WebSockets and operational transformation algorithms."
+    },
+    highlights: [
+      "Dean's List 3 consecutive years",
+      "Erasmus Exchange – TU Delft, Netherlands",
+    ]
+  }
+]
+---
+
+<section class="py-16 px-8 bg-gray-50" id="education">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold mb-12 text-gray-900">Education</h2>
+
+    <div class="flex flex-col gap-8">
+      {education.map((item) => (
+        <div class="bg-white rounded-2xl p-8 hover:shadow-md transition-shadow duration-300">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            {/* LEFT - School info */}
+            <div class="flex flex-col gap-2">
+              <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">{item.period}</span>
+              <h3 class="text-xl font-bold text-gray-900">{item.degree}</h3>
+              <p class="text-gray-600 font-medium">{item.school}</p>
+              <p class="text-gray-400 text-sm">{item.location}</p>
+
+              {/* Score badge */}
+              <div class="inline-flex items-center gap-2 mt-3 w-fit">
+                <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">Final Score</span>
+                <span class="bg-gray-900 text-white text-sm font-bold px-3 py-1 rounded-full">
+                  {item.score}
+                </span>
+              </div>
+            </div>
+
+            {/* MIDDLE - Thesis */}
+            <div class="flex flex-col gap-2 md:border-l md:border-gray-100 md:pl-8">
+              <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">Final Project</span>
+              <p class="text-gray-900 font-semibold">{item.thesis.title}</p>
+              <p class="font-serif italic text-gray-500 text-sm leading-relaxed">{item.thesis.description}</p>
+            </div>
+
+            {/* RIGHT - Highlights */}
+            <div class="flex flex-col gap-2 md:border-l md:border-gray-100 md:pl-8">
+              <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">Highlights</span>
+              <ul class="flex flex-col gap-2 mt-1">
+                {item.highlights.map((highlight) => (
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gray-400 mt-1.5 flex-shrink-0" />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
