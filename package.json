@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check-s3": "aws s3 ls s3://ivanobeso.dev --profile default",
+    "deploy": "pnpm run build && aws s3 sync dist/ s3://ivanobeso.dev --profile default --delete"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",

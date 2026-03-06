@@ -58,6 +58,8 @@ you need to create a terraform.tfvars in the infra folder with this content
 ```
 cloudflare_api_token = "your_token"
 cloudflare_zone_id   = "your_zone_id"
+github_username = "your_github_username"
+github_repository = "your_github_project"
 ```
 So it fetches from Cloudflare the data needed to issue the ACM certificate.
 
@@ -91,6 +93,28 @@ what it creates in Cloudflare is:
    CNAME: www.ivanobeso.dev → xxx.cloudfront.net
 ```
 Cloudflare is only used for DNS records, all the infra is deployed in AWS.
+
+# CI/CD
+Every time there is a pushed commit into the main branch I am deploying it to the S3 bucket. This means sending the /dist folder to the bucket and invalidating the cloudflare cache so it gets refreshed with the new content. I am using github actions and the OIDC approach, so I dont need to put my AWS credentials into github.
+
+The github runner will assume a role that I created with permissions to operate the S3 and cloudflare. Github will ask the OIDC provider that I created for this. This will issue a temporary token that is what the github runner will use to assume the role.
+
+So, on every push to main
+```
+push main
+   ↓
+GitHub runner
+   ↓
+OIDC token issued
+   ↓
+AWS STS assume role
+   ↓
+temporary credentials
+   ↓
+sync dist/ → S3
+   ↓
+invalidate CloudFront
+```
 
 # TODO
 - put a description of experience in the Hero, and a link to the blog

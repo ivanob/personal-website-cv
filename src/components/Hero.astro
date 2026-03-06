@@ -14,7 +14,7 @@ const hero = {
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
-    { label: "Interests", href: "#interests" },
+    { label: "Education", href: "#education" },
   ]
 }
 ---
@@ -23,7 +23,9 @@ const hero = {
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
     
     {/* LEFT - Identity */}
-    <div class="flex flex-col gap-6">
+    <div id="heroLeft" class="flex flex-col gap-6">
+
+      {/* Avatar */}
       <div class="flex items-center gap-5">
         <img src={hero.avatar} alt={hero.name} class="w-20 h-20 rounded-full object-cover" />
         <div>
@@ -101,6 +103,7 @@ const hero = {
 <header id="stickyNav" class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300 z-50" style="transform: translateY(-100%);">
   <div class="max-w-6xl mx-auto px-8 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
+      <img src={hero.avatar} alt={hero.name} class="w-8 h-8 rounded-full object-cover" />
       <h2 class="text-sm font-bold text-gray-900">{hero.name}</h2>
       <span class="text-gray-400 text-xs">{hero.title}</span>
     </div>
@@ -128,110 +131,65 @@ const hero = {
   </div>
 </header>
 
-{/* Floating Action Button */}
+{/* Floating Buttons */}
 <div id="fab" class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3 opacity-0 pointer-events-none transition-all duration-300">
   
-  {/* Options - shown when FAB is open */}
-  <div id="fabOptions" class="flex flex-col items-end gap-2 opacity-0 pointer-events-none transition-all duration-300 translate-y-2">
-    <a
-      href={`mailto:${hero.email}`}
-      class="flex items-center gap-3 bg-white border border-gray-200 text-gray-900 pl-4 pr-5 py-2.5 rounded-full text-sm font-medium shadow-lg hover:shadow-xl hover:border-gray-900 transition-all duration-200"
-    >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-        <polyline points="22,6 12,12 2,6"/>
-      </svg>
-      Say hello
-    </a>
-    <a
-      href="/cv.pdf"
-      download
-      class="flex items-center gap-3 bg-white border border-gray-200 text-gray-900 pl-4 pr-5 py-2.5 rounded-full text-sm font-medium shadow-lg hover:shadow-xl hover:border-gray-900 transition-all duration-200"
-    >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      Download CV
-    </a>
-  </div>
-
-  {/* Main FAB button */}
-  <button
-    id="fabTrigger"
-    class="w-12 h-12 bg-gray-900 text-white rounded-full shadow-lg hover:shadow-xl hover:bg-gray-700 transition-all duration-200 flex items-center justify-center"
-    aria-label="Contact options"
+  <a
+    href={`mailto:${hero.email}`}
+    class="flex items-center gap-3 bg-white border border-gray-200 text-gray-900 pl-4 pr-5 py-2.5 rounded-full text-sm font-medium shadow-lg hover:shadow-xl hover:border-gray-900 transition-all duration-200"
   >
-    <svg id="fabIconOpen" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <line x1="12" y1="5" x2="12" y2="19"/>
-      <line x1="5" y1="12" x2="19" y2="12"/>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,12 2,6"/>
     </svg>
-    <svg id="fabIconClose" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden">
-      <line x1="18" y1="6" x2="6" y2="18"/>
-      <line x1="6" y1="6" x2="18" y2="18"/>
+    Say hello
+  </a>
+
+  <a
+    href="/cv.pdf"
+    download
+    class="flex items-center gap-3 bg-gray-900 text-white pl-4 pr-5 py-2.5 rounded-full text-sm font-medium shadow-lg hover:shadow-xl hover:bg-gray-700 transition-all duration-200"
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
     </svg>
-  </button>
+    Download CV
+  </a>
 
 </div>
 
 <script>
   const stickyNav = document.getElementById('stickyNav');
   const hero = document.getElementById('hero');
-  const heroButtons = document.getElementById('heroButtons');
+  const heroLeft = document.getElementById('heroLeft');
   const fab = document.getElementById('fab');
-  const fabTrigger = document.getElementById('fabTrigger');
-  const fabOptions = document.getElementById('fabOptions');
-  const fabIconOpen = document.getElementById('fabIconOpen');
-  const fabIconClose = document.getElementById('fabIconClose');
 
-  let fabOpen = false;
-
-  // Show/hide FAB based on scroll
   window.addEventListener('scroll', () => {
     const heroHeight = hero.offsetHeight;
     const scrollPercent = Math.min(window.scrollY / (heroHeight * 0.4), 1);
 
-    stickyNav.style.transform = `translateY(calc(-100% + ${scrollPercent * 100}%))`;
-    heroButtons.style.opacity = Math.max(1 - scrollPercent * 2, 0).toString();
+    // Left side blurs and fades out
+    const blur = scrollPercent * 8;
+    const opacity = Math.max(1 - scrollPercent * 1.5, 0);
+    const scale = 1 - scrollPercent * 0.05;
+    heroLeft.style.filter = `blur(${blur}px)`;
+    heroLeft.style.opacity = opacity.toString();
+    heroLeft.style.transform = `scale(${scale})`;
 
-    // FAB appears only after hero is scrolled past
+    // Sticky nav slides in from top
+    stickyNav.style.transform = `translateY(calc(-100% + ${scrollPercent * 100}%))`;
+    stickyNav.style.opacity = scrollPercent.toString();
+
+    // FAB appears
     if (scrollPercent >= 1) {
       fab.style.opacity = '1';
       fab.style.pointerEvents = 'auto';
     } else {
       fab.style.opacity = '0';
       fab.style.pointerEvents = 'none';
-      closeFab();
     }
-  });
-
-  // Toggle FAB options
-  fabTrigger.addEventListener('click', () => {
-    fabOpen ? closeFab() : openFab();
-  });
-
-  function openFab() {
-    fabOpen = true;
-    fabOptions.style.opacity = '1';
-    fabOptions.style.pointerEvents = 'auto';
-    fabOptions.style.transform = 'translateY(0)';
-    fabIconOpen.classList.add('hidden');
-    fabIconClose.classList.remove('hidden');
-  }
-
-  function closeFab() {
-    fabOpen = false;
-    fabOptions.style.opacity = '0';
-    fabOptions.style.pointerEvents = 'none';
-    fabOptions.style.transform = 'translateY(8px)';
-    fabIconOpen.classList.remove('hidden');
-    fabIconClose.classList.add('hidden');
-  }
-
-  // Close FAB when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!fab.contains(e.target)) closeFab();
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

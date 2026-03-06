@@ -16,7 +16,7 @@ const experiences = [
     company: "Design Studio",
     logo: "/companies/designstudio.png",
     period: "2020 - 2022",
-    location: "Porto, Portugal",  
+    location: "Porto, Portugal",
     description: "Designed mobile and web applications with focus on user-centered design principles.",
     skills: ["UI/UX", "Prototyping", "User Testing"]
   },
@@ -29,30 +29,99 @@ const experiences = [
     location: "Remote",
     description: "Created visual designs and interactive prototypes for early-stage products.",
     skills: ["Visual Design", "Wireframing", "Branding"]
-  }
+  },
+  {
+    id: 4,
+    title: "UI Designer",
+    company: "Agency Co",
+    logo: "/companies/agency.png",
+    period: "2016 - 2018",
+    location: "Madrid, Spain",
+    description: "Crafted visual identities and digital experiences for clients across retail and finance sectors.",
+    skills: ["Branding", "Illustration", "HTML/CSS"]
+  },
+  {
+    id: 5,
+    title: "Design Intern",
+    company: "Creative Lab",
+    logo: "/companies/creativelab.png",
+    period: "2015 - 2016",
+    location: "Madrid, Spain",
+    description: "Supported senior designers on client projects, created assets and ran usability sessions.",
+    skills: ["Sketch", "User Testing", "Motion"]
+  },
+  {
+    id: 6,
+    title: "Freelance Designer",
+    company: "Self Employed",
+    logo: "/companies/freelance.png",
+    period: "2014 - 2015",
+    location: "Remote",
+    description: "Worked with small businesses to create websites, logos and marketing materials.",
+    skills: ["Web Design", "Branding", "Wordpress"]
+  },
+  {
+    id: 7,
+    title: "UI Designer",
+    company: "Agency Co",
+    logo: "/companies/agency.png",
+    period: "2016 - 2018",
+    location: "Madrid, Spain",
+    description: "Crafted visual identities and digital experiences for clients across retail and finance sectors.",
+    skills: ["Branding", "Illustration", "HTML/CSS"]
+  },
+  {
+    id: 8,
+    title: "Design Intern",
+    company: "Creative Lab",
+    logo: "/companies/creativelab.png",
+    period: "2015 - 2016",
+    location: "Madrid, Spain",
+    description: "Supported senior designers on client projects, created assets and ran usability sessions.",
+    skills: ["Sketch", "User Testing", "Motion"]
+  },
+  {
+    id: 9,
+    title: "Freelance Designer",
+    company: "Self Employed",
+    logo: "/companies/freelance.png",
+    period: "2014 - 2015",
+    location: "Remote",
+    description: "Worked with small businesses to create websites, logos and marketing materials.",
+    skills: ["Web Design", "Branding", "Wordpress"]
+  },
 ];
+
+const BATCH_SIZE = 3;
 ---
 
-<section class="py-16 px-8 bg-white">
+<section class="py-16 px-8 bg-white" id="experience">
   <div class="max-w-8xl mx-auto">
     <h2 class="text-5xl font-bold text-center mb-16 text-gray-900">Professional Experience</h2>
-    
+
     <div class="relative max-w-7xl mx-auto">
-      <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 -translate-x-1/2"></div>
-      
-      <div class="space-y-0">
+
+      {/* Timeline line */}
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 md:-translate-x-1/2"></div>
+
+      {/* Cards wrapper - clipped when collapsed */}
+      <div id="experienceList" class="relative space-y-0 overflow-hidden">
+
         {experiences.map((exp, index) => (
-          <div class="relative py-8">
-            <div class="absolute left-1/2 top-8 w-4 h-4 bg-gray-900 rounded-full -translate-x-1/2 z-10"></div>
-            
-            <div class={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-              <div class="w-1/2"></div>
-              
-              <div class="w-1/2 px-6">
+          <div
+            class="relative py-8 experience-item"
+            data-index={index}
+            style={index >= BATCH_SIZE ? "display: none;" : ""}
+          >
+            <div class="absolute left-4 md:left-1/2 top-8 w-4 h-4 bg-gray-900 rounded-full -translate-x-1/2 z-10"></div>
+
+            <div class={`flex flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <div class="hidden md:block md:w-1/2"></div>
+              <div class={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pl-10' : 'md:pr-10'}`}>
                 <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow duration-200">
+
                   <div class="text-sm text-gray-500 font-medium mb-2">{exp.period}</div>
 
-                  {/* Logo + title + company row */}
                   <div class="flex items-center gap-3 mb-4">
                     <div class="flex-shrink-0 w-10 h-10 bg-white rounded-lg border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden">
                       <img src={exp.logo} alt={exp.company} class="w-7 h-7 object-contain" />
@@ -63,7 +132,6 @@ const experiences = [
                     </div>
                   </div>
 
-                  {/* Everything else unchanged */}
                   <p class="text-gray-600 text-sm leading-relaxed mb-4">{exp.description}</p>
                   <div class="flex flex-wrap gap-2">
                     {exp.skills.map(skill => (
@@ -78,7 +146,58 @@ const experiences = [
             </div>
           </div>
         ))}
+
+        {/* Blur overlay */}
+        <div id="experienceBlur" class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+
       </div>
+
+      {/* Expand button */}
+      <div id="expandWrapper" class="relative flex justify-center mt-2 z-10">
+        <button
+          id="expandBtn"
+          class="flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg hover:bg-gray-700 transition-all duration-200"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+          Show more experience
+        </button>
+      </div>
+
     </div>
   </div>
 </section>
+
+<script>
+  const items = document.querySelectorAll('.experience-item');
+  const expandBtn = document.getElementById('expandBtn');
+  const expandWrapper = document.getElementById('expandWrapper');
+  const blur = document.getElementById('experienceBlur');
+  const BATCH = 3;
+  let shown = BATCH;
+
+  expandBtn.addEventListener('click', () => {
+    const next = shown + BATCH;
+
+    for (let i = shown; i < Math.min(next, items.length); i++) {
+      const el = items[i] as HTMLElement;
+      el.style.display = '';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      requestAnimationFrame(() => {
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    }
+
+    shown = next;
+
+    // Hide button and blur when all shown
+    if (shown >= items.length) {
+      expandWrapper.style.display = 'none';
+      blur.style.display = 'none';
+    }
+  });
+</script>
