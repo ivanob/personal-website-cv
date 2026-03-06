@@ -20,9 +20,9 @@ jobs:
         with:
           node-version: 20
 
-      - run: npm ci
+      - run: pnpm install
 
-      - run: npm run build
+      - run: pnpm build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
