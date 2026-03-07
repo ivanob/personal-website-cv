@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "github_assume_role" {
 
 # This is the IAM role that GitHub Actions will assume when deploying. It uses the trust policy defined above.
 resource "aws_iam_role" "github_deploy" {
-  name = "github-actions-deploy"
+  name = "github-deploy-role" # This needs to match with the name used in the deploy.yml
 
   assume_role_policy = data.aws_iam_policy_document.github_assume_role.json
 }
