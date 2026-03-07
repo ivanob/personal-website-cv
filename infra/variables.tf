@@ -14,3 +14,7 @@ variable "github_username" {
 variable "github_repository" {
   description = "GitHub repository name for OIDC provider condition"
 }
+
+variable "site_bucket_name" {
+  type = string
+}

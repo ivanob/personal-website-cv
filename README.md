@@ -60,6 +60,7 @@ cloudflare_api_token = "your_token"
 cloudflare_zone_id   = "your_zone_id"
 github_username = "your_github_username"
 github_repository = "your_github_project"
+site_bucket_name = "name_of_the_s3_bucket"
 ```
 So it fetches from Cloudflare the data needed to issue the ACM certificate.
 

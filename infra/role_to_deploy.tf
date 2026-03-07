@@ -45,8 +45,8 @@ data "aws_iam_policy_document" "github_deploy_permissions" {
       "s3:ListBucket"
     ]
     resources = [
-      "arn:aws:s3:::${var.github_username}.dev",
-      "arn:aws:s3:::${var.github_username}.dev/*"
+      "arn:aws:s3:::${var.site_bucket_name}",
+      "arn:aws:s3:::${var.site_bucket_name}/*"
     ]
     effect = "Allow"
   }
