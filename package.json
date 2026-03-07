@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "check-s3": "aws s3 ls s3://ivanobeso.dev --profile default",
     "deploy": "pnpm run build && aws s3 sync dist/ s3://ivanobeso.dev --profile default --delete",
-    "print-cloudfront-domain": "aws cloudfront list-distributions --profile default | grep DomainName"
+    "print-cloudfront-domainname": "aws cloudfront list-distributions --profile default | grep DomainName",
+    "print-cloudfront-distribution-id": "aws cloudfront list-distributions --profile default --query 'DistributionList.Items[].{Id:Id,Domain:DomainName}' --output table"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",

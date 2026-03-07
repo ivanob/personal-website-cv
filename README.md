@@ -70,6 +70,7 @@ Add each one:
 Name: AWS_ACCOUNT_ID → Value: your 12-digit AWS account ID
 Name: CLOUDFRONT_DISTRIBUTION_ID → Value: your distribution ID (e.g. E1ABCDEF123456)
 ```
+Note: I have a script named "print-cloudfront-distribution-id" in the package.json to read the CLOUDFRONT_DISTRIBUTION_ID from command line using AWS CLI.
 
 # Full sequence when I run terraform apply
 
