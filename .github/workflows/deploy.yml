@@ -33,7 +33,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-deploy-role
-          aws-region: eu-west-1
+          aws-region: eu-west-2
 
       - name: Upload to S3
         run: |
