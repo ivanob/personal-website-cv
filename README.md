@@ -63,6 +63,14 @@ github_repository = "your_github_project"
 ```
 So it fetches from Cloudflare the data needed to issue the ACM certificate.
 
+Also for the CI/CD, On the repository of the project in github: Settings → Secrets and variables → Actions → New repository secret
+
+Add each one:
+```
+Name: AWS_ACCOUNT_ID → Value: your 12-digit AWS account ID
+Name: CLOUDFRONT_DISTRIBUTION_ID → Value: your distribution ID (e.g. E1ABCDEF123456)
+```
+
 # Full sequence when I run terraform apply
 
 ```
