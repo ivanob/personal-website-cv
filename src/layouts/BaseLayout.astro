@@ -2,20 +2,46 @@
 import '../styles/global.css';
 
 export interface Props {
-  title: string;
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title = "Ivan Obeso — Senior Product Designer",
+  description = "Senior Product Designer based in Lisbon with 8+ years building scalable, accessible digital products across Europe. Specialising in design systems, UX and the intersection of design and engineering.",
+  canonicalUrl = "https://ivanobeso.dev",
+  ogImage = "/og-image.png",
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Personal website and CV" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Ivan Obeso" />
+    <meta name="robots" content="index, follow" />
+
+    {/* Open Graph — LinkedIn, Slack, iMessage previews */}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_GB" />
+
+    {/* Twitter / X Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
     <main>
