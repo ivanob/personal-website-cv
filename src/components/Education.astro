@@ -2,32 +2,33 @@
 const education = [
   {
     degree: "MSc Computer Science",
-    school: "Universidad Politécnica de Madrid",
-    location: "Madrid, Spain",
-    period: "2014 – 2016",
-    score: "8.7 / 10",
+    school: "University of Oviedo",
+    location: "Oviedo, Spain",
+    period: "2008 – 2011",
+    score: "3.8 / 4",
     thesis: {
-      title: "Adaptive UI Systems for Mobile Devices",
-      description: "Research on context-aware interfaces that adapt layout and content based on user behaviour patterns."
+      title: "Study and design of a prototype for managing the evolution of the competencies in a company using fuzzy logic and other methods of artificial intelligence",
+      url: "https://sourceforge.net/projects/empl-prof-view/"
     },
     highlights: [
-      "Graduated with Honours",
-      "Best Thesis Award – HCI category",
+      "Scored 9.5/10 in the final thesis project",
+      "Graduated with Honours"      
     ]
   },
   {
     degree: "BSc Software Engineering",
-    school: "Universidad Politécnica de Madrid",
-    location: "Madrid, Spain",
-    period: "2010 – 2014",
-    score: "8.2 / 10",
+    school: "University of Oviedo",
+    location: "Oviedo, Spain",
+    period: "2004 - 2008",
+    score: "3.7 / 4",
     thesis: {
-      title: "Real-time Collaborative Web Editor",
-      description: "Built a real-time collaborative text editor using WebSockets and operational transformation algorithms."
+      title: "Web application – Automata simulator in Struts 2",
+      description: ""
     },
     highlights: [
-      "Dean's List 3 consecutive years",
-      "Erasmus Exchange – TU Delft, Netherlands",
+      "Scored 9/10 in the final thesis project",
+      "Specialization in \"Systems administration\"",
+      "Specialization in \"Internet applications integration\"",
     ]
   }
 ]
@@ -49,9 +50,9 @@ const education = [
               <p class="text-gray-600 font-medium">{item.school}</p>
               <p class="text-gray-400 text-sm">{item.location}</p>
 
-              {/* Score badge */}
+              {/* GPA badge */}
               <div class="inline-flex items-center gap-2 mt-3 w-fit">
-                <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">Final Score</span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">GPA</span>
                 <span class="bg-gray-900 text-white text-sm font-bold px-3 py-1 rounded-full">
                   {item.score}
                 </span>
@@ -62,7 +63,8 @@ const education = [
             <div class="flex flex-col gap-2 md:border-l md:border-gray-100 md:pl-8">
               <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">Final Project</span>
               <p class="text-gray-900 font-semibold">{item.thesis.title}</p>
-              <p class="font-serif italic text-gray-500 text-sm leading-relaxed">{item.thesis.description}</p>
+              {item.thesis.description && <p class="font-serif italic text-gray-500 text-sm leading-relaxed">{item.thesis.description}</p>}
+              {item.thesis.url && <a href={item.thesis.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800 transition-colors duration-200 text-sm">Link to the project</a>}
             </div>
 
             {/* RIGHT - Highlights */}

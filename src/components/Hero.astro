@@ -2,7 +2,8 @@
 const hero = {
   name: "Ivan Obeso",
   title: "Senior Backend Engineer",
-  location: "Lisbon, Portugal",
+  location: "🇵🇹 Lisbon, Portugal",
+  status: "🇪🇺 EU Resident · No visa needed",
   avatar: "/avatar.png",
   quote: "I am a senior Software Engineer with a Bachelor’s degree and an MSc in Computer Science, "
   + "and 15+ years of professional experience across the full software development lifecycle, "
@@ -10,7 +11,7 @@ const hero = {
   + "building cloud-based distributed systems, from API definition to architecture design and "
   + "implementation, with extensive experience in system optimization, scalability, and reliability.",
 
-  description: "In my most recent role, I led a team of five developers from the very early stages through the "
+  description: "In my most recent role, I led a team of 6 developers from the very early stages through the "
   + "successful delivery of an MVP and its launch into production. My responsibilities included "
   + "defining and communicating the architecture, guiding development, making technical "
   + "decisions, and fostering strong team engagement. I have successfully mentored junior "
@@ -38,10 +39,11 @@ const hero = {
 
       {/* Avatar */}
       <div class="flex items-center gap-5">
-        <img src={hero.avatar} alt={hero.name} class="w-20 h-20 rounded-full object-cover" />
+        <img src={hero.avatar} alt={hero.name} class="w-20 h-20 rounded-full object-cover ring-2 ring-gray-900 ring-offset-2 ring-offset-gray-50" />
         <div>
           <h1 class="text-3xl font-bold text-gray-900">{hero.name}</h1>
           <p class="text-gray-500 text-sm mt-1">{hero.title} · {hero.location}</p>
+          <p class="text-gray-400 text-xs mt-0.5">{hero.status}</p>
         </div>
       </div>
 
@@ -114,7 +116,7 @@ const hero = {
 <header id="stickyNav" class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300 z-50" style="transform: translateY(-100%);">
   <div class="max-w-6xl mx-auto px-8 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <img src={hero.avatar} alt={hero.name} class="w-8 h-8 rounded-full object-cover" />
+      <img src={hero.avatar} alt={hero.name} class="w-8 h-8 rounded-full object-cover ring-2 ring-gray-900 ring-offset-2 ring-offset-white" />
       <h2 class="text-sm font-bold text-gray-900">{hero.name}</h2>
       <span class="text-gray-400 text-xs">{hero.title}</span>
     </div>

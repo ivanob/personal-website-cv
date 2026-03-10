@@ -16,13 +16,13 @@ const experiences = [
       and implementing scalable APIs. Designed and implemented smart contracts, advancing the blockchain solution
       from initial PoC through to MVP deployment.`,
       ["I designed and developed 2 mobile apps (each for Android and iOS) using React Native and Expo ",
-        { text: "[1]", url: "https://placeholder-app1.com" },
+        { text: "[1]", url: "https://apps.apple.com/us/app/ticketsoft/id6754926604" },
         " ",
-        { text: "[2]", url: "https://placeholder-app2.com" },
+        { text: "[2]", url: "https://apps.apple.com/co/app/ticketsoft-promoters/id6755961389" },
          " ",
-        { text: "[3]", url: "https://placeholder-app2.com" },
+        { text: "[3]", url: "https://play.google.com/store/apps/details?id=com.ticketsoft.customers.app&hl=e" },
          " ",
-        { text: "[4]", url: "https://placeholder-app2.com" },
+        { text: "[4]", url: "https://play.google.com/store/apps/details?id=com.ticketsoft.promoters.app&hl=en" },
         ". I also tested in preflight and went through the whole publishing process. Created a system for versioning and automatically generating the deliverables locally with Gradle + Android Studio and XCode."],
       
     ],
@@ -57,74 +57,89 @@ const experiences = [
   },
   {
     id: 3,
-    title: "Junior Designer",
-    company: "Startup Inc",
-    logo: "/companies/startup.png",
-    period: "2018 - 2020",
+    title: "Senior Backend Engineer",
+    company: "Outplayed.com ",
+    logo: "/companies/outplayedcom.jpeg",
+    period: "Aug 2022 – March 2023",
     location: "Remote",
-    description: ["Created visual designs and interactive prototypes for early-stage products."],
-    skills: ["Visual Design", "Wireframing", "Branding"]
+    url: "https://outplayed.com/",
+    description: [
+      `I was a member of a small squad supporting the infrastructure and code of the
+      backend of outplayed.com. The backend is developed in TypeScript and AWS lambdas, SQS,
+      SNS, and DynamoDB, all handled with Terraform. My daily tasks are debugging errors,
+      implementing some new features, and monitoring the performance of the systems via
+      Datadog and AWS console. I was responsible for implementing OAuth 2.0 to secure our API.`
+      ,`
+      Outplayed.com built a data-intensive application that handles thousands of users and updates prices in
+      milliseconds. Performance on the execution time and use of resources are key here, and
+      their impact is immediately realizable in production.`
+    ],
+    skills: ["Terraform", "Node.js", "TypeScript", "GraphQL", "AWS", "Lambda", "SQS", 
+      "SNS", "API Gateway", "DynamoDB"]
   },
   {
     id: 4,
-    title: "UI Designer",
-    company: "Agency Co",
-    logo: "/companies/agency.png",
-    period: "2016 - 2018",
-    location: "Madrid, Spain",
-    description: ["Crafted visual identities and digital experiences for clients across retail and finance sectors."],
-    skills: ["Branding", "Illustration", "HTML/CSS"]
+    title: "Senior Backend Engineer",
+    company: "Big Town Chef / Coinburp",
+    logo: "/companies/unknown.png",
+    period: "Aug 2021 – Aug 2022",
+    location: "Remote",
+    url: "https://www.bigtownchef.com/",
+    description: [
+      `Senior backend engineer position in Coinburp. I worked in Big Town Chef NFT game development. 
+      I designed, developed, tested, and deployed backend services to provide support to the blockchain project. 
+      The backend fetches all the on-chain events emitted by our contracts and processes them, store them 
+      in a database, and exposes this data in an API to be consumed by our frontend. The focus was on 
+      functional programming, small composable functions, and being easily testable.`,
+      { list: [
+        "Design of the company token and integration with the NFT game.",
+        "Design of NFTs implementation on Polygon and minting process.",
+        "Staking of tokens and NFTs.",
+        "Running raffles, lotteries, and gifts for staking to gather engagement from the community.",
+        "Support for Collaborations and integration with other NFT projects."
+      ]}
+    ],
+    skills: ["TypeScript", "Docker", "Jest", "Ava", "Prisma", "PostgreSQL", "AWS", "Solidity", "Polygon", "Fintech"]
   },
   {
     id: 5,
-    title: "Design Intern",
-    company: "Creative Lab",
-    logo: "/companies/creativelab.png",
-    period: "2015 - 2016",
-    location: "Madrid, Spain",
-    description: ["Supported senior designers on client projects, created assets and ran usability sessions."],
-    skills: ["Sketch", "User Testing", "Motion"]
+    title: "Senior Backend Engineer",
+    company: "Wabco",
+    logo: "/companies/zf.jpeg",
+    url: "https://www.zf.com/",
+    period: "Jan 2021 - Jul 2021",
+    location: "Dublin, Ireland",
+    description: [
+      `I worked as a backend developer in a serverless project to fetch, process, and store events from IoT 
+      devices. The software gathers information about all the devices installed in each truck of a fleet 
+      in order to control information about the heat or pressure in wheels, speed, location, problems with 
+      the cargo... `,
+      `This project was completely designed, developed and deployed using AWS technologies. 
+      The application was split into lambda functions, S3, AWS IoT, AWS gateway... My role covered 
+      testing the current codebase, developing new functions, and refactoring code.`
+    ],
+    skills: ["Node", "TypeScript", "Jest", "Serverless", "AWS Gateway", "SQS", "DynamoDB", "Lambda", "AWS IoT"]
   },
   {
     id: 6,
-    title: "Freelance Designer",
-    company: "Self Employed",
-    logo: "/companies/freelance.png",
-    period: "2014 - 2015",
-    location: "Remote",
-    description: ["Worked with small businesses to create websites, logos and marketing materials."],
-    skills: ["Web Design", "Branding", "Wordpress"]
-  },
-  {
-    id: 7,
-    title: "UI Designer",
-    company: "Agency Co",
-    logo: "/companies/agency.png",
-    period: "2016 - 2018",
-    location: "Madrid, Spain",
-    description: ["Crafted visual identities and digital experiences for clients across retail and finance sectors."],
-    skills: ["Branding", "Illustration", "HTML/CSS"]
-  },
-  {
-    id: 8,
-    title: "Design Intern",
-    company: "Creative Lab",
-    logo: "/companies/creativelab.png",
-    period: "2015 - 2016",
-    location: "Madrid, Spain",
-    description: ["Supported senior designers on client projects, created assets and ran usability sessions."],
-    skills: ["Sketch", "User Testing", "Motion"]
-  },
-  {
-    id: 9,
-    title: "Freelance Designer",
-    company: "Self Employed",
-    logo: "/companies/freelance.png",
-    period: "2014 - 2015",
-    location: "Remote",
-    description: ["Worked with small businesses to create websites, logos and marketing materials."],
-    skills: ["Web Design", "Branding", "Wordpress"]
-  },
+    title: "Senior Full-Stack Engineer",
+    company: "Consensys",
+    logo: "/companies/consensys.jpeg",
+    url: "https://consensys.io/",
+    period: "Aug 2018 – Dec 2020",
+    location: "Dublin, Ireland",
+    description: [
+      [`I worked as a full-stack developer in ConsenSys. My work balance between frontend and
+      backend is 70% − 30% respectively. I am part of the development team of `,
+      { text: "Komgo project", url: "https://komgo.io/" },` a platform to trade commodities over a private blockchain based on Ethereum.
+      My daily work includes design, the definition of user stories, and direct contact with the client in
+      an agile environment. I have actively contributed to the design and implementation of the KYC
+      application and the sharing and signing of documents between nodes using Solidity. My role also
+      includes mentoring and helping new members to ramp up on the team.`]
+    ],
+    skills: ["Blockchain", "Ethereum", "Quorum", "Solidity", "Ganache", "Typescript", "React",
+      "Redux", "Jest", "Docker", "AWS", "Kubernetes", "Kaleido"]
+  }
 ];
 
 const BATCH_SIZE = 3;
@@ -180,15 +195,19 @@ const BATCH_SIZE = 3;
 
                   <div class="mb-4">
                     {exp.description.map(para => (
-                      <p class="text-gray-600 text-sm leading-relaxed mb-2">
-                        {Array.isArray(para)
-                          ? para.map(seg => typeof seg === 'string'
-                              ? seg
-                              : <a href={seg.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800 transition-colors duration-200">{seg.text}</a>
-                            )
-                          : para
-                        }
-                      </p>
+                      typeof para === 'object' && 'list' in para
+                        ? <ul class="list-disc list-inside text-gray-600 text-sm leading-relaxed mb-2 space-y-1">
+                            {para.list.map((item: string) => <li>{item}</li>)}
+                          </ul>
+                        : <p class="text-gray-600 text-sm leading-relaxed mb-2">
+                            {Array.isArray(para)
+                              ? para.map((seg: any) => typeof seg === 'string'
+                                  ? seg
+                                  : <a href={seg.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800 transition-colors duration-200">{seg.text}</a>
+                                )
+                              : para
+                            }
+                          </p>
                     ))}
                   </div>
                   <div class="flex flex-wrap gap-2 mt-6">

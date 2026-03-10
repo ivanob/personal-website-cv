@@ -3,16 +3,19 @@ const interests = [
   {
     emoji: "♟️",
     title: "Chess",
-    description: "Link to chess.com"
+    url: "https://www.chess.com/member/cachopivoro",
+    description: "Challenge me!"
   },
   {
     emoji: "🎶",
     title: "Music",
-    description: "Spotify link"
+    url: "https://open.spotify.com/user/cachopivoro?si=f3509d919e254f50",
+    description: "Spotify listener"
   },
   {
     emoji: "🏋️",
     title: "Exercise",
+    url: "https://www.youtube.com/watch?v=kwqnYtmUuNo",
     description: "Irons & Gainz"
   }
 ]
@@ -27,7 +30,10 @@ const interests = [
         <div class="flex flex-col gap-3 p-8 bg-white rounded-2xl hover:shadow-md transition-shadow duration-300">
           <span class="text-4xl">{interest.emoji}</span>
           <h3 class="text-lg font-bold text-gray-900">{interest.title}</h3>
-          <p class="font-serif text-gray-500 text-sm leading-relaxed italic">{interest.description}</p>
+        
+          {interest.url && (
+            <a href={interest.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800 transition-colors duration-200 text-sm">{interest.description}</a>
+          )}
         </div>
       ))}
     </div>
