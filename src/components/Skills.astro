@@ -1,45 +1,67 @@
 ---
-const underDevelopment = true; // set to false to remove the overlay
+const underDevelopment = false; // set to false to remove the overlay
 
 const skills = [
-  {
-    category: "Frontend",
-    icon: "🎨",
-    items: [
-      { tech: "React", description: "Component-based UI development" },
-      { tech: "TypeScript", description: "Type-safe JavaScript" },
-      { tech: "Astro", description: "Static site generation" },
-      { tech: "Tailwind CSS", description: "Utility-first styling" },
-    ]
-  },
   {
     category: "Backend",
     icon: "⚙️",
     items: [
-      { tech: "Node.js", description: "Server-side JavaScript" },
-      { tech: "Python", description: "Scripting and APIs" },
-      { tech: "PostgreSQL", description: "Relational database" },
-      { tech: "REST APIs", description: "API design and integration" },
+      { tech: "Typescript / Javascript / Node", description: "Type-safe JavaScript", explanation: "Expert" },
+      { tech: "Rust", description: "Systems programming language", explanation: "Intermediate level (Learning)" },
+      { tech: "Java", description: "Object-oriented programming language", explanation: "A bit rusty" },
+      { tech: "NestJS", description: "Progressive Node.js framework", explanation: "Professional experience" },
     ]
   },
   {
-    category: "Cloud",
+    category: "Cloud & Platform",
     icon: "☁️",
     items: [
-      { tech: "AWS S3", description: "Static file storage" },
-      { tech: "CloudFront", description: "CDN and content delivery" },
-      { tech: "ACM", description: "SSL certificate management" },
-      { tech: "IAM", description: "Access and identity management" },
+      { tech: "AWS services", description: "Cloud computing services", explanation: "Expert" },
+      { tech: "Serverless", description: "Serverless computing", explanation: "Expert" },
+      { tech: "ECS", description: "Elastic Container Service", explanation: "Advanced level" },
+      { tech: "Docker", description: "Containerisation", explanation: "Advanced level" },
+      { tech: "Kubernetes", description: "Container orchestration", explanation: "Intermediate level (Learning)" },
+      { tech: "Terraform", description: "Infrastructure as code", explanation: "Expert" },
     ]
   },
   {
-    category: "DevOps",
+    category: "Frontend",
+    icon: "🎨",
+    items: [
+      { tech: "React", description: "Component-based UI development", explanation: "Professional experience" },
+      { tech: "Next.js", description: "React framework for server-side rendering", explanation: "Professional experience" },
+      { tech: "Astro", description: "Static site generation", explanation: "Basic level" },
+      { tech: "Tailwind CSS", description: "Utility-first styling", explanation: "Basic level" },
+    ]
+  },
+  {
+    category: "Databases",
+    icon: "🗄️",
+    items: [
+      { tech: "PostgreSQL", description: "Relational database", explanation: "Advanced level" },
+      { tech: "DynamoDB / MongoDB", description: "NoSQL database", explanation: "Expert" },
+      { tech: "Redis", description: "In-memory data structure store", explanation: "" },
+      { tech: "Kafka", description: "Distributed event streaming platform", explanation: "Used as AWS Kinesis" },
+    ]
+  },
+  {
+    category: "Services & Tools",
     icon: "🚀",
     items: [
-      { tech: "Terraform", description: "Infrastructure as code" },
-      { tech: "GitHub Actions", description: "CI/CD pipelines" },
-      { tech: "Docker", description: "Containerisation" },
-      { tech: "Git", description: "Version control" },
+      { tech: "GitHub Actions", description: "CI/CD pipelines", explanation: "" },
+      { tech: "Cloudflare CDN", description: "Web performance and security", explanation: "" },
+      { tech: "Git", description: "Version control", explanation: "" },
+    ]
+  },
+  {
+    category: "Methodologies",
+    icon: "📐",
+    items: [
+      { tech: "DDD", description: "Domain-Driven Design", explanation: "Expert" },
+      { tech: "Event-driven Architecture", description: "Design pattern for building scalable systems", explanation: "Expert" },
+      { tech: "Microservices", description: "Architectural style for building applications", explanation: "Expert" },
+      { tech: "Clean architectures", description: "Software design philosophy", explanation: "+10 years experience" },
+      { tech: "Agile (Scrum & Kanban)", description: "Agile methodologies", explanation: "+10 years experience" },
     ]
   }
 ];
@@ -71,10 +93,10 @@ const skills = [
               <li class="flex items-center gap-3">
                 <span class="w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
                 <span class="inline-flex items-center gap-2">
-                  <span class="bg-gray-900 text-white text-sm font-medium px-3 py-1 rounded-full">
+                  <span class="bg-blue-900 text-white text-sm font-medium px-3 py-1 rounded-full cursor-help" title={item.description}>
                     {item.tech}
                   </span>
-                  <span class="text-gray-600 text-sm">{item.description}</span>
+                  {item.explanation && <span class="text-gray-600 text-sm">{item.explanation}</span>}
                 </span>
               </li>
             ))}
